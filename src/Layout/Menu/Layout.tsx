@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Box} from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import Menu from './Menu';
 
 interface Props {}
@@ -21,14 +21,14 @@ const Layout = (props: React.PropsWithChildren<Props>) => {
             rgba(23, 52, 75, 1) 65%,
             rgba(2, 2, 11, 1) 100%
           );`,
-      border: 'solid yellow 10px',
-      height: '100',
+      height: '100%',
+      border: 'solid red 1px',
     };
   };
 
   return (
     <Box sx={gradeintSx(angle)}>
-      <Grid container>
+      <Grid sx={{ height: '100%', border: '1px solid pink' }} container>
         <Grid item sx={{ height: '100%', border: '1px solid pink' }} xs={9}>
           {props.children}
         </Grid>
