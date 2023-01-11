@@ -1,0 +1,45 @@
+.productsList {
+  height: 100%;
+  box-shadow: 0 0 1.5em 0 inset rgba(2, 2, 11, 1), 0 0 0.5em 0 rgba(2, 2, 11, 1);
+  margin: 40px;
+  cursor: grab;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  -webkit-animation: fade-in 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
+  animation: fade-in 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
+}
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,194 @@
+#root {
+  /* --clr-neon: #ff14bd; */
+  --clr-neon: gold;
+  --clr-bg: hsl(323 21% 16%);
+  --clr-blueNeon: rgb(26, 221, 235);
+  --clr-blddueNeon: #17344b;
+  height: 100%;
+}
+
+#menu__circle {
+  border: solid 5px #add8e6;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  transform: rotate(0deg);
+}
+
+.animate__button {
+  font-size: 2rem;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  top: -235.5px;
+  padding: 0.25em 1em;
+  border-radius: 0.25em;
+  background-color: transparent;
+  border: var(--clr-blueNeon) 0.125em solid;
+  color: var(--clr-blueNeon);
+  text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.315), 0 0 0.25em currentColor;
+  box-shadow: 0 0 0.5em 0 currentColor, inset 0 0 0.5em 0 currentColor;
+  transition: background-color 500ms linear ease-in-out;
+}
+.animate__button::before {
+  content: '';
+  position: absolute;
+  background: var(--clr-blueNeon);
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1.2em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1.2em);
+  opacity: 0.7;
+}
+
+.animate__button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  box-shadow: 0 0 2em 0.5em var(--clr-blueNeon);
+}
+
+.animate__button:hover::before {
+  animation: background-change-2x 1.5s infinite linear alternate both;
+}
+
+.animate__button:hover::after {
+  animation: after-change-2x 1.5s linear infinite alternate both;
+}
+
+.animate__button:hover {
+  animation: color-change-2x 1.5s linear infinite alternate both;
+}
+
+@keyframes after-change-2x {
+  0% {
+    box-shadow: 0 0 2em 0.5em #19dcea;
+  }
+  100% {
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  }
+}
+
+@keyframes background-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: var(--clr-neon);
+  }
+}
+
+@-webkit-keyframes color-change-2x {
+  0% {
+    color: #19dcea;
+    border-color: #19dcea;
+    box-shadow: 0 0 0.5em 0 #19dcea, inset 0 0 0.5em 0 #19dcea;
+    text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.315), 0 0 0.25em #19dcea;
+  }
+  100% {
+    color: var(--clr-neon);
+    border-color: var(--clr-neon);
+    box-shadow: 0 0 0.5em 0 var(--clr-neon), inset 0 0 0.5em 0 var(--clr-neon);
+
+    text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.315),
+      0 0 0.25em var(--clr-neon);
+  }
+}
+
+@keyframes color-change-2x {
+  0% {
+    color: #19dcea;
+    border-color: #19dcea;
+    box-shadow: 0 0 0.5em 0 #19dcea, inset 0 0 0.5em 0 #19dcea;
+    text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.315), 0 0 0.25em #19dcea;
+  }
+  100% {
+    color: var(--clr-neon);
+    border-color: var(--clr-neon);
+    box-shadow: 0 0 0.5em 0 var(--clr-neon), inset 0 0 0.5em 0 var(--clr-neon);
+    text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.315),
+      0 0 0.25em var(--clr-neon);
+  }
+}
+
+@-webkit-keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+@keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+
+@-webkit-keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+@keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
