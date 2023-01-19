@@ -1,19 +1,37 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import AuthorizationContext from '../../store/authorization.context';
 import { Box } from '@mui/material/';
 import './Menu.css';
 import { itemSx, mainCircle } from './MenuSX';
-
-const menuOptions = ['Login', 'Products',];
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Menu = (props: any) => {
-  const [selectedOption, setSelectedOption] = useState('Login');
-  const [angle, setAngle] = useState(0);
+  const [selectedOption, setSelectedOption] = useState('Products');
+  const { angle, changeAngle, isLoggedIn } = useContext(AuthorizationContext);
+
+  let menuOptions: string[];
+  if (!isLoggedIn) {
+    menuOptions = ['Products', 'Login'];
+  } else {
+    menuOptions = ['Products', 'Logout'];
+  }
+
+  const navigate = useNavigate();
   const onActivate = () => {
-    setAngle((p) => p + 180);
     props.getAngle(angle);
+    changeAngle();
+
+    if (selectedOption !== 'Products') {
+      navigate('./');
+    } else {
+      navigate('./login');
+    }
   };
+  useEffect(() => {}, [isLoggedIn]);
+
   return (
-    <Box sx={{ paddingTop: '80px', textAlign: 'center',  }}>
+    <Box sx={{ paddingTop: '80px', textAlign: 'center' }}>
       <Box sx={mainCircle}>
         {menuOptions.map((option, index) => (
           <Box

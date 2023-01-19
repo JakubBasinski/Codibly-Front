@@ -1,14 +1,31 @@
-.productsList {
-  height: 70%;
+.carousel {
   box-shadow: 0 0 1.5em 0 inset rgba(2, 2, 11, 1), 0 0 0.5em 0 rgba(2, 2, 11, 1);
-  padding: 20px;
-  cursor: grab;
+  padding: 40px;
   overflow: hidden;
   display: flex;
-  margin: 80px;
   flex-direction: column;
   -webkit-animation: fade-in 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
   animation: fade-in 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
+  margin: 40px 80px 80px 80px;
+  cursor: grab;
+
+}
+
+.fadeOutCarousel {
+  box-shadow: 0 0 1.5em 0 inset rgba(2, 2, 11, 1), 0 0 0.5em 0 rgba(2, 2, 11, 1);
+  padding: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  -webkit-animation: fade-out 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
+  animation: fade-out 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
+  margin: 40px 80px 80px 80px;
+}
+
+.innerCarousel {
+  cursor: grab;
+  display: flex;
+  align-items: center;
 }
 
 @-webkit-keyframes fade-out {

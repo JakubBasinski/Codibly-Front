@@ -14,6 +14,8 @@ const Layout = (props: React.PropsWithChildren<Props>) => {
   const gradeintSx = (itemAngle: number) => {
     return {
       flexGrow: 1,
+      overflow: 'auto',
+      minHeight: '100%',
       background: `linear-gradient(
           ${itemAngle}deg,
             rgba(31, 38, 38, 1) 0%,
@@ -21,23 +23,16 @@ const Layout = (props: React.PropsWithChildren<Props>) => {
             rgba(23, 52, 75, 1) 65%,
             rgba(2, 2, 11, 1) 100%
           );`,
-      height: '100%',
-      border: 'solid red 1px',
     };
   };
 
   return (
     <Box sx={gradeintSx(angle)}>
-      <Grid sx={{ height: '100%', border: '1px solid pink' }} container>
-        <Grid item sx={{ height: '100%', border: '1px solid pink' }} xs={9}>
+      <Grid sx={{ height: '100%', flexGrow: 1 }} container>
+        <Grid item sx={{ height: '100%', flexGrow: 1 }} xs={9}>
           {props.children}
         </Grid>
-        <Grid
-          item
-          xs={12}
-          md={3}
-          sx={{ display: 'flex', justifyContent: 'center' }}
-        >
+        <Grid item xs={3} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Menu getAngle={getAngle} />
         </Grid>
       </Grid>

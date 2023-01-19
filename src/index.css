@@ -19,10 +19,13 @@ body {
   --clr-neon: gold;
   --clr-bg: hsl(323 21% 16%);
   --clr-blueNeon: rgb(26, 221, 235);
-  --clr-blddueNeon: #17344b;
+  --clr-blddueNeon: hsl(207, 53%, 19%);
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  height: 100vh;
+  overflow: auto;
+  min-height: 100vh;
+  width: 100%;
   font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 24px;
   font-weight: 400;
