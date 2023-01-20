@@ -1,53 +1,33 @@
-import { SetStateAction, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
-export const useCreateUser = () => {
-  const [state, setState] = useState<
-    SetStateAction<{
-      isLoading: boolean;
-      error: {} | undefined;
-      serverMsg: string;
-    }>
-  >({
-    isLoading: false,
-    error: {},
-    serverMsg: '',
-  });
-
-  let url = import.meta.env.VITE_BACKEND_URL;
-
-  const fn = async (data: {}) => {
-    setState(
-      (prevState: {
-        isLoading: boolean;
-        error: {} | undefined;
-        serverMsg: string;
-      }) => ({
-        ...prevState,
-        isLoading: true,
-      })
-    );
+export function usePickupProduct(
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  setServerMsg: React.Dispatch<React.SetStateAction<string>>,
+  setProducts: (products: []) => void
+) {
+  return async (data: { name: string; id: number; color: string }) => {
+    const url = import.meta.env.VITE_BACKEND_URL;
+    const token = localStorage.getItem('token');
     await axios
       .post(`${url}/pickup`, data, {
         headers: {
           'Content-Type': 'application/json',
+          Authorization: token,
         },
       })
       .then((res) => {
-        setState(
-          (pre: {
-            isLoading: boolean;
-            error: {} | undefined;
-            serverMsg: string;
-          }) => ({
-            ...pre,
-            serverMsg: res.data.message,
-          })
-        );
+        if (res.data.message) {
+          setOpen(true);
+          setServerMsg(res.data.message);
+        }
+        if (res.data.products) {
+          setProducts(res.data.products);
+          localStorage.setItem('products', res.data.products);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  return { postCreateUser: fn, ...state };
-};
+}

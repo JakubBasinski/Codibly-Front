@@ -25,3 +25,18 @@ export const mainCircle = {
   height: '400px',
   transform: ' rotate(0deg)',
 };
+
+export const gradeintSx = (itemAngle: number) => {
+  return {
+    flexGrow: 1,
+    overflow: 'auto',
+    minHeight: '100%',
+    background: `linear-gradient(
+        ${itemAngle}deg,
+          rgba(31, 38, 38, 1) 0%,
+          rgba(26, 64, 63, 1) 36%,
+          rgba(23, 52, 75, 1) 65%,
+          rgba(2, 2, 11, 1) 100%
+        );`,
+  };
+};

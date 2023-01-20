@@ -67,11 +67,3 @@ export const logoutButton = {
     transform: 'translateY(-1px)',
   },
 };
-
-// align-items: center;
-// justify-content: start;
-// margin: 80px;
-// flex-direction: column;
-
-// -webkit-animation: fade-in 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
-// animation: fade-in 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;

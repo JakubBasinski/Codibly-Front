@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ProductInterface } from '../../assets/helper';
+import { ProductInterface } from '../../../assets/helper';
 
 interface SerchBarProps {
   products: ProductInterface[];

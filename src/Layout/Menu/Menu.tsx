@@ -6,7 +6,11 @@ import { itemSx, mainCircle } from './MenuSX';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const Menu = (props: any) => {
+interface Props {
+  getAngle: (angle: number) => void;
+}
+
+const Menu = (props: Props) => {
   const [selectedOption, setSelectedOption] = useState('Products');
   const { angle, changeAngle, isLoggedIn } = useContext(AuthorizationContext);
 

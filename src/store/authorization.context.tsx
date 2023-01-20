@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
-
-let logoutTimer: number;
+import React, { useState, useCallback } from 'react';
 
 interface AuthContextType {
   angle: number;

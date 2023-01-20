@@ -6,26 +6,15 @@ import AuthorizationContext from '../../store/authorization.context';
 import {
   Grid,
   Button,
-  TextField,
-  Typography,
   Snackbar,
   IconButton,
 } from '@mui/material';
-import { FormControl } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import * as cls from './AuthFormSx';
 import axios from 'axios';
+import { CustomFormControl } from './CustomFormControl';
+import { initialFieldValues, errorsFieldValues } from './AuthHelpers';
 
-export const initialFieldValues = {
-  name: '',
-  email: '',
-  password: '',
-  confirmation: '',
-};
-
-export const errorsFieldValues = {
-  confirmationError: false,
-};
 
 export const LoginPage = () => {
   const { login, isLoggedIn, logout, setProducts } =
@@ -49,7 +38,10 @@ export const LoginPage = () => {
   };
 
   const [open, setOpen] = useState(false);
-  const handleClose = (reason: any) => {
+  const handleClose = (
+    _event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -104,7 +96,7 @@ export const LoginPage = () => {
       })
       .then((res) => {
         setValues(initialFieldValues);
-        if (res.data && isLogin) { 
+        if (res.data && isLogin) {
           login(res.data.token, res.data.userId);
           setProducts(res.data.products);
           navigate('/page/1');
@@ -143,78 +135,13 @@ export const LoginPage = () => {
       <Grid container justifyContent="center">
         <Grid item md={4} justifyContent="center">
           <form onSubmit={submitHandler}>
-            <FormControl sx={cls.FormControlSx}>
-              <Typography variant="h5" sx={cls.formSubmition}>
-                {isLogin ? 'Login' : 'Sign up'}
-              </Typography>
-              {!isLogin && (
-                <TextField
-                  label="Name"
-                  name="name"
-                  variant="filled"
-                  value={values.name}
-                  onChange={handleInputChange}
-                  sx={cls.formInputs}
-                  autoComplete="new-password"
-                  required
-                />
-              )}
-              <TextField
-                variant="filled"
-                name="email"
-                onChange={handleInputChange}
-                label="Email"
-                value={values.email}
-                sx={cls.formInputs}
-                type="email"
-                autoComplete="new-password"
-                required
-              />
-              <TextField
-                variant="filled"
-                onChange={handleInputChange}
-                name="password"
-                label="Password"
-                value={values.password}
-                inputProps={{
-                  type: 'password',
-                }}
-                sx={cls.formInputs}
-                autoComplete="new-password"
-                required
-              />
-              {!isLogin && (
-                <TextField
-                  variant="filled"
-                  sx={cls.formInputs}
-                  name="confirmation"
-                  label="Confirm Password"
-                  inputProps={{
-                    type: 'password',
-                  }}
-                  value={values.confirmation}
-                  onChange={handleInputChange}
-                  autoComplete="new-password"
-                  required
-                  error={errors.confirmationError}
-                  helperText={
-                    errors.confirmationError && 'Passwrods does not match'
-                  }
-                />
-              )}
-              <Button sx={cls.submitButton} type="submit">
-                {isLogin ? 'Login' : 'Sign up'}
-              </Button>
-              <Button
-                sx={cls.submitButton}
-                type="button"
-                onClick={switchAuthModeHandler}
-              >
-                {isLogin
-                  ? ' Create new account'
-                  : 'Login with existing account'}
-              </Button>
-            </FormControl>
+            <CustomFormControl
+              isLogin={isLogin}
+              values={values}
+              errors={errors}
+              handleInputChange={handleInputChange}
+              switchAuthModeHandler={switchAuthModeHandler}
+            ></CustomFormControl>
           </form>
         </Grid>
         <Snackbar
